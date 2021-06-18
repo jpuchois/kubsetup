@@ -21,3 +21,10 @@ pour match avec votre clef
 
 
 
+
+
+Pour lancer le setup :
+
+terraform init
+terraform plan #pour voir ce qui va etre fais
+terraform apply
