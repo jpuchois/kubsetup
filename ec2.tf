@@ -9,16 +9,17 @@ resource "aws_instance" "kubMaster" {
     Name = "kubMaster"
   }
 
+  connection {
+    host = "${self.public_ip}"
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = "${file(var.keypath)}"
+  }
+
   provisioner "file" {
     source      = "scripts/k8sMaster.sh"
     destination = "~/k8sMaster.sh"
 
-    connection {
-      host = "${self.public_ip}"
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = "${file(var.keypath)}"
-    }
   }
 
   provisioner "remote-exec" {
@@ -26,13 +27,6 @@ resource "aws_instance" "kubMaster" {
       "chmod +x ~/k8sMaster.sh",
       "~/k8sMaster.sh",
     ]
-
-    connection {
-      host = "${self.public_ip}"
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = "${file(var.keypath)}"
-    }
   }
 }
 
@@ -50,17 +44,16 @@ resource "aws_instance" "kubWorker" {
   tags = {
     Name = "kubWorker"
   }
+  connection {
+    host = "${self.public_ip}"
+    type        = "ssh"
+    user        = "ubuntu"
+    private_key = "${file(var.keypath)}"
+  }
 
   provisioner "file" {
     source      = "scripts/k8sSecond.sh"
     destination = "~/k8sSecond.sh"
-
-    connection {
-      host = "${self.public_ip}"
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = "${file(var.keypath)}"
-    }
   }
 
   provisioner "remote-exec" {
@@ -68,13 +61,6 @@ resource "aws_instance" "kubWorker" {
       "chmod +x ~/k8sSecond.sh",
       "~/k8sSecond.sh",
     ]
-
-    connection {
-      host = "${self.public_ip}"
-      type        = "ssh"
-      user        = "ubuntu"
-      private_key = "${file(var.keypath)}"
-    }
   }
 }
 
