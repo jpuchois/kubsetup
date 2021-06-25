@@ -38,26 +38,3 @@ variable "keypath" {
         type = string
         default = "~/.ssh/myvm_key.pem"
 }
-
-
-variable "AWS_ACCESS_KEY_ID" {
-  description = "aws acces key"
-  type        = string
-  sensitive   = true
-}
-
-
-variable "AWS_SECRET_ACCESS_KEY" {
-  description = "aws secret key"
-  type        = string
-  sensitive   = true
-}
-
-
-
-
-
-
-
-
-
