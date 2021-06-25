@@ -1,7 +1,3 @@
-provider "aws" {
-    region = "${var.aws_region}"
-}
-
 # VPC
 resource "aws_vpc" "kub_vpc" {
   cidr_block              = var.vpc_cidr

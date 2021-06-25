@@ -30,13 +30,34 @@ variable "ami" {
 
 variable "key" {
         type = string
-        default = "formationKub"
+        default = "myvm_key"
 }
 
 
 variable "keypath" {
         type = string
-        default = "~/.ssh/formationKub.pem"
+        default = "~/.ssh/myvm_key.pem"
 }
+
+
+variable "access_key" {
+  description = "aws acces key"
+  type        = string
+  sensitive   = true
+}
+
+
+variable "secret_key" {
+  description = "aws secret key"
+  type        = string
+  sensitive   = true
+}
+
+
+
+
+
+
+
 
 
