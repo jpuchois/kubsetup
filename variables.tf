@@ -40,14 +40,14 @@ variable "keypath" {
 }
 
 
-variable "access_key" {
+variable "AWS_ACCESS_KEY_ID" {
   description = "aws acces key"
   type        = string
   sensitive   = true
 }
 
 
-variable "secret_key" {
+variable "AWS_SECRET_ACCESS_KEY" {
   description = "aws secret key"
   type        = string
   sensitive   = true
